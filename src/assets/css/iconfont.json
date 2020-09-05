@@ -1,0 +1,30 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "111904",
+      "name": "五角星",
+      "font_class": "star",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "10446123",
+      "name": "空心五角星",
+      "font_class": "kongxinwujiaoxing",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "15779808",
+      "name": "五角星",
+      "font_class": "wujiaoxing",
+      "unicode": "e712",
+      "unicode_decimal": 59154
+    }
+  ]
+}
