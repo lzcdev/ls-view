@@ -1,6 +1,6 @@
 <template>
-  <div class="rate-container">
-    <div class="rate" ref="items" v-for="(item,index) in list" :key="index" @touchstart="onTouchStart($event)" @touchmove="onTouchMove($event)">
+  <div class="rate-container" ref="container" @touchmove="onTouchMove($event)">
+    <div ref="items" class="rate" v-for="(item,index) in list" :key="index" @touchstart="onTouchStart($event, index)">
       <span :class="['iconfont',item.class]" :style="{width: `${size}px`, color: item.color, fontSize: `${size}px`, marginRight: `${gutter}px`, cursor: disabled ? 'not-allowed' : ''}"></span>
       <span class="half" :class="['iconfont',item.halfClass]" :style="{width: `${size/2}px`,overflow: 'hidden', color: item.halfColor, fontSize: `${size}px`, marginRight: `${gutter}px`, cursor: disabled ? 'not-allowed' : ''}"></span>
     </div>
@@ -101,43 +101,47 @@ export default {
         color: this.voidColor
       }
     },
-    onTouchStart (event) {
-      this.select(event)
-    },
-    onTouchMove (event) {
-      this.select(event)
-    },
-    select (event) {
+    onTouchStart (event, index) {
       if (this.readonly || this.disabled || !this.touchable) return
       const { clientX } = event.touches[0]
-      // console.log(event.touches[0])
-      // let left = this.$refs.items.getBoundingClientRect()
-      // console.log(left)
-      // const s = this.allowHalf
-      // const count = clientX / (this.size + Number(this.gutter))
-      // this.count * (this.size + Number(this.gutter))
-      const count = clientX / this.size
-      const floorCount = Math.floor(count)
-
+      const left = this.$refs.items[index].getBoundingClientRect().left
+      if (this.allowHalf && (clientX - left) <= this.size / 2) {
+        this.currentValue = index + 0.5
+      } else {
+        this.currentValue = index + 1
+      }
+      this.select(this.currentValue)
+    },
+    onTouchMove (event) {
+      const left = this.$refs.container.getBoundingClientRect().left
+      const { clientX } = event.touches[0]
+      const c = clientX - left
+      const s = parseInt(this.size) + parseInt(this.gutter)
+      const count = c / s
+      const floorCount = Math.floor(c / s)
       if (this.allowHalf && count > floorCount && count < (floorCount + 0.5)) {
         this.currentValue = floorCount + 0.5
       } else {
         this.currentValue = floorCount + 1
       }
-      if (this.currentValue < 0) {
-        this.currentValue = 0
+      this.select(this.currentValue)
+    },
+    select (value) {
+      if (this.allowHalf && value < 1) {
+        this.currentValue = 0.5
       }
-      if (this.currentValue > this.count) {
+      if (!this.allowHalf && value < 1) {
+        this.currentValue = 1
+      }
+      if (value > this.count) {
         this.currentValue = this.count
       }
-
       if (this.oldValue !== this.currentValue) {
         this.oldValue = this.currentValue
         this.$emit('input', this.currentValue)
         this.$emit('change', this.currentValue)
       }
-
-    },
+    }
     // handleClick (event) {
     //  this.select(event)
     // if (this.readonly && this.disabled) return
