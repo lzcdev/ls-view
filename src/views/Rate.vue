@@ -43,8 +43,7 @@ export default {
       value6: 2.5,
       value7: 4,
       value8: 2,
-      value9: 3,
-
+      value9: 3
     }
   },
   methods: {
