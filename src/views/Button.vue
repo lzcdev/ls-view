@@ -1,5 +1,6 @@
 <template>
   <div class="button">
+    <span class="vant-icon van-icon-add-o"></span>
     <div class="title">按钮类型</div>
     <ls-button class="btn" type="primary" @click="click" @touchstart="touchstart">主要按钮</ls-button>
     <ls-button class="btn" type="info">信息按钮</ls-button>
@@ -21,9 +22,11 @@
     <ls-button class="btn" disabled type="primary" @click="click">禁用状态</ls-button>
     <ls-button class="btn" disabled type="info">禁用状态</ls-button>
 
-    <div class="title">加载状态（暂未实现）</div>
-    <ls-button class="btn" type="primary">加载中</ls-button>
-    <ls-button class="btn" type="info">加载中</ls-button>
+    <div class="title">加载状态（有bug）</div>
+    <ls-button class="btn" type="primary" loading></ls-button>
+    <ls-button class="btn" type="primary" loading loading-type="spinner"></ls-button>
+    <ls-button class="btn" type="info" loading loading-text="加载中..."></ls-button>
+    <ls-button class="btn" type="warning" loading loading-type="spinner" color="#2FC29C" loading-text="加载中..." loading-size=50></ls-button>
 
     <div class="title">按钮形状</div>
     <ls-button class="btn" square type="primary">无圆角按钮</ls-button>
