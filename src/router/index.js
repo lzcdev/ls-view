@@ -16,6 +16,11 @@ const routes = [
     component: () => import('../views/Button.vue')
   },
   {
+    path: '/icon',
+    name: 'Icon',
+    component: () => import('../views/Icon.vue')
+  },
+  {
     path: '/rate',
     name: 'Rate',
     component: () => import('../views/Rate.vue')
