@@ -1,0 +1,40 @@
+@font-face {
+  font-weight: normal;
+  font-family: 'vant-icon';
+  font-style: normal;
+  font-display: auto;
+  src: url('https://img.yzcdn.cn/vant/vant-icon-0c347b.woff2') format('woff2'), url('https://img.yzcdn.cn/vant/vant-icon-0c347b.woff') format('woff'), url('https://img.yzcdn.cn/vant/vant-icon-0c347b.ttf') format('truetype');
+}
+
+.vant-icon {
+  position: relative;
+  display: inline-block;
+  font: normal normal normal 14px/1 'vant-icon';
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+
+  &::before {
+    display: inline-block;
+  }
+}
+
+.van-icon-add-o::before {
+  content: '\F000';
+}
+
+.icon-half {
+  font-size: 28px;
+}
+
+.icon-half:before {
+  content: "\e60e";
+}
+
+.icon-full:before {
+  content: "\e533";
+}
+
+.icon-empty:before {
+  content: "\e62c";
+}

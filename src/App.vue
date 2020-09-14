@@ -5,7 +5,8 @@
 </template>
 
 <style>
-@import "../src/assets/css/iconfont.css";
+@import "../src/assets/css/iconfont.styl";
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

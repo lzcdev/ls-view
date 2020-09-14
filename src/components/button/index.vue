@@ -1,13 +1,17 @@
 <template>
-  <!-- <div class="button"> -->
   <button class="ls-button ls-button--normal" :class="classes" :style="{background:buttonBackground,color: buttonColor,borderColor:this.color}" disabled="disabled" @click="onClick" @touchstart="onTouchStart">
+    <ls-loading v-show="loading" :style="{margin: `${loadingSize/3}px 0`}" :type="loadingType" color="#fff" :size="loadingSize">{{loadingText}}</ls-loading>
     <slot></slot>
   </button>
-  <!-- </div> -->
 </template>
 
 <script>
+import LsLoading from '../loading'
+
 export default {
+  components: {
+    LsLoading
+  },
   props: {
     type: {
       type: String,
@@ -22,6 +26,10 @@ export default {
     plain: Boolean,
     hairline: Boolean,
     disabled: Boolean,
+    loading: Boolean,
+    loadingType: String,
+    loadingText: String,
+    loadingSize: [String, Number],
     square: Boolean,
     round: Boolean,
     block: Boolean
@@ -78,7 +86,7 @@ changeType(color, bgColor, borderColor) {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
-  height: 44px;
+  min-height: 44px;
   margin: 0;
   padding: 0;
   font-size: 16px;
@@ -91,95 +99,107 @@ changeType(color, bgColor, borderColor) {
   transition: opacity 0.2s;
   -webkit-appearance: none;
   outline: none;
-}
+  border: 1px solid red;
 
-.ls-button:active {
-}
-
-.ls-button--large {
-  width: 100%;
-  height: 50px;
-}
-
-.ls-button--normal {
-  padding: 0 15px;
-  font-size: 14px;
-}
-
-.ls-button--small {
-  height: 32px;
-  padding: 0 8px;
-  font-size: 12px;
-}
-
-.ls-button--mini {
-  height: 24px;
-  padding: 0 4px;
-  font-size: 10px;
-}
-
-.ls-button--default {
-  changeType(#323233, #fff, #ebedf0);
-}
-
-.ls-button--primary {
-  changeType(#fff, #07c160, #07c160);
-}
-
-.ls-button--info {
-  changeType(#fff, #1989fa, #1989fa);
-}
-
-.ls-button--danger {
-  changeType(#fff, #ee0a24, #ee0a24);
-}
-
-.ls-button--warning {
-  changeType(#fff, #ff976a, #ff976a);
-}
-
-.ls-button--hairline {
-  border-width: 0;
-}
-
-.ls-button--plain {
-  background-color: #fff;
-
-  .ls-button--default {
-    changeType(#ebedf0, #fff, #ebedf0);
+  &:active::before {
+    opacity: 0.1;
   }
 
-  &.ls-button--primary {
-    changeType(#07c160, #fff, #07c160);
+  &--large {
+    width: 100%;
+    height: 50px;
   }
 
-  &.ls-button--info {
-    changeType(#1989fa, #fff, #1989fa);
+  &--large {
+    width: 100%;
+    height: 50px;
   }
 
-  &.ls-button--danger {
-    changeType(#ee0a24, #fff, #ee0a24);
+  &--normal {
+    padding: 0 15px;
+    font-size: 14px;
   }
 
-  &.ls-button--warning {
-    changeType(#ff976a, #fff, #ff976a);
+  &--small {
+    height: 32px;
+    padding: 0 8px;
+    font-size: 12px;
   }
-}
 
-.ls-button--disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
-}
+  &--mini {
+    height: 24px;
+    padding: 0 4px;
+    font-size: 10px;
+  }
 
-.ls-button--square {
-  border-radius: 0;
-}
+  &--default {
+    changeType(#323233, #fff, #ebedf0);
+  }
 
-.ls-button--round {
-  border-radius: 999px;
-}
+  &--primary {
+    changeType(#fff, #07c160, #07c160);
+  }
 
-.ls-button--block {
-  display: block;
+  &--info {
+    changeType(#fff, #1989fa, #1989fa);
+  }
+
+  &--danger {
+    changeType(#fff, #ee0a24, #ee0a24);
+  }
+
+  &--warning {
+    changeType(#fff, #ff976a, #ff976a);
+  }
+
+  &--plain {
+    background-color: #fff;
+
+    .ls-button--default {
+      changeType(#ebedf0, #fff, #ebedf0);
+    }
+
+    &.ls-button--primary {
+      changeType(#07c160, #fff, #07c160);
+    }
+
+    &.ls-button--info {
+      changeType(#1989fa, #fff, #1989fa);
+    }
+
+    &.ls-button--danger {
+      changeType(#ee0a24, #fff, #ee0a24);
+    }
+
+    &.ls-button--warning {
+      changeType(#ff976a, #fff, #ff976a);
+    }
+  }
+
+  &--hairline {
+    // width: 200%;
+    // height: 100%;
+    // // font-size: ;
+    // transform: scale(0.5);
+    // line-height: 100%;
+    // transform-origin: left top;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  &--square {
+    border-radius: 0;
+  }
+
+  &--round {
+    border-radius: 999px;
+  }
+
+  &--block {
+    display: block;
+  }
 }
 </style>

@@ -11,6 +11,11 @@
       <router-link to="/rate">Rate 评分</router-link>
     </div>
 
+    <div class="title">反馈组件</div>
+    <div class="components">
+      <router-link to="/loading">Loading 加载</router-link>
+    </div>
+
   </div>
 </template>
 
