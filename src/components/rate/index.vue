@@ -1,8 +1,8 @@
 <template>
   <div class="rate-container" ref="container" @touchmove="onTouchMove($event)">
     <div ref="items" class="rate" v-for="(item,index) in list" :key="index" @touchstart="onTouchStart($event, index)">
-      <span :class="['iconfont',item.class]" :style="{width: `${size}px`, color: item.color, fontSize: `${size}px`, marginRight: `${gutter}px`, cursor: disabled ? 'not-allowed' : ''}"></span>
-      <span class="half" :class="['iconfont',item.halfClass]" :style="{width: `${size/2}px`,overflow: 'hidden', color: item.halfColor, fontSize: `${size}px`, marginRight: `${gutter}px`, cursor: disabled ? 'not-allowed' : ''}"></span>
+      <span :class="['vant-icon',item.class]" :style="{width: `${size}px`, color: item.color, fontSize: `${size}px`, marginRight: `${gutter}px`, cursor: disabled ? 'not-allowed' : ''}"></span>
+      <span class="half" :class="['vant-icon',item.halfClass]" :style="{width: `${size/2}px`,overflow: 'hidden', color: item.halfColor, fontSize: `${size}px`, marginRight: `${gutter}px`, cursor: disabled ? 'not-allowed' : ''}"></span>
     </div>
   </div>
 </template>
@@ -40,11 +40,11 @@ export default {
     },
     icon: {
       type: String,
-      default: 'icon-full'
+      default: 'van-icon-star'
     },
     voidIcon: {
       type: String,
-      default: 'icon-empty'
+      default: 'van-icon-star-o'
     },
     allowHalf: {
       type: Boolean,
@@ -82,22 +82,22 @@ export default {
     getRateValue (value, index, allowHalf) {
       if (Math.floor(value) > index) {
         return {
-          class: 'icon-full',
+          class: 'van-icon-star',
           halfClass: '',
           color: this.disabled ? this.disabledColor : this.color
         }
       }
       if (Math.ceil(value) > index && allowHalf) {
         return {
-          class: 'icon-empty',
-          halfClass: 'icon-full',
+          class: 'van-icon-star-o',
+          halfClass: 'van-icon-star',
           color: this.voidColor,
           halfColor: this.color
           // color: this.disabled ? this.disabledColor : (this.color)
         }
       }
       return {
-        class: 'icon-empty',
+        class: 'van-icon-star-o',
         color: this.voidColor
       }
     },

@@ -1,6 +1,5 @@
 <template>
   <div class="button">
-    <span class="vant-icon van-icon-add-o"></span>
     <div class="title">按钮类型</div>
     <ls-button class="btn" type="primary" @click="click" @touchstart="touchstart">主要按钮</ls-button>
     <ls-button class="btn" type="info">信息按钮</ls-button>
