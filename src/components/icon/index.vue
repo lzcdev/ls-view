@@ -1,6 +1,6 @@
 <template>
   <i :class="classes" :style="{color: this.color, fontSize: fontSize}" @click="onClick">
-    <div :class="badgeClass">
+    <div v-show="dot || badge" :class="badgeClass">
       {{badge}}
     </div>
     <img v-show="showUrlIcon" class="vant-icon__image" :src="name" alt="">
@@ -16,7 +16,7 @@ export default {
     badge: [Number, String],
     size: {
       type: [String, Number],
-      default: '32',
+      default: '24',
     }
   },
   data () {
@@ -67,7 +67,7 @@ export default {
 <style lang="stylus" scoped>
 vant-icon-default-margin = 16px 0 16px;
 vant-icon-default-color = #323233;
-vant-icon-default-size = 32px;
+vant-icon-default-size = 24px;
 
 .vant-icon {
   margin: vant-icon-default-margin;

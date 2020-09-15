@@ -21,7 +21,7 @@
     <ls-button class="btn" disabled type="primary" @click="click">禁用状态</ls-button>
     <ls-button class="btn" disabled type="info">禁用状态</ls-button>
 
-    <div class="title">加载状态（有bug）</div>
+    <div class="title">加载状态（有一点bug）</div>
     <ls-button class="btn" type="primary" loading></ls-button>
     <ls-button class="btn" type="primary" loading loading-type="spinner"></ls-button>
     <ls-button class="btn" type="info" loading loading-text="加载中..."></ls-button>
@@ -31,9 +31,10 @@
     <ls-button class="btn" square type="primary">无圆角按钮</ls-button>
     <ls-button class="btn" round type="info">圆角按钮</ls-button>
 
-    <div class="title">图标按钮（暂未实现）</div>
-    <ls-button class="btn" type="primary">按钮</ls-button>
-    <ls-button class="btn" type="info">按钮</ls-button>
+    <div class="title">图标按钮</div>
+    <ls-button class="btn" icon="plus" type="primary"></ls-button>
+    <ls-button class="btn" icon="plus" type="info">按钮</ls-button>
+    <ls-button class="btn" icon="https://img.yzcdn.cn/vant/user-active.png" plain type="info">按钮</ls-button>
 
     <div class="title">按钮尺寸</div>
     <ls-button class="btn" type="primary" size="large">大号按钮</ls-button>

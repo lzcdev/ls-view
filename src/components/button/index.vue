@@ -1,16 +1,23 @@
 <template>
   <button class="ls-button ls-button--normal" :class="classes" :style="{background:buttonBackground,color: buttonColor,borderColor:this.color}" disabled="disabled" @click="onClick" @touchstart="onTouchStart">
     <ls-loading v-show="loading" :style="{margin: `${loadingSize/3}px 0`}" :type="loadingType" color="#fff" :size="loadingSize">{{loadingText}}</ls-loading>
-    <slot></slot>
+    <ls-icon v-show="icon" :name="icon" color="#fff" />
+    <div class="ls-button--text">
+      <slot></slot>
+    </div>
+
   </button>
 </template>
 
 <script>
 import LsLoading from '../loading'
+import LsIcon from '../icon'
+
 
 export default {
   components: {
-    LsLoading
+    LsLoading,
+    LsIcon
   },
   props: {
     type: {
@@ -21,6 +28,7 @@ export default {
       type: String,
       default: 'normal'
     },
+    icon: String,
     text: String,
     color: String,
     plain: Boolean,
@@ -84,7 +92,9 @@ changeType(color, bgColor, borderColor) {
 
 .ls-button {
   position: relative;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   box-sizing: border-box;
   min-height: 44px;
   margin: 0;
@@ -183,6 +193,10 @@ changeType(color, bgColor, borderColor) {
     // transform: scale(0.5);
     // line-height: 100%;
     // transform-origin: left top;
+  }
+
+  &--text {
+    margin-left: 5px;
   }
 
   &--disabled {
