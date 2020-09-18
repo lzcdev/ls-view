@@ -5,6 +5,8 @@
     <div class="components">
       <router-link to="/button">Button 按钮</router-link>
       <router-link to="/icon">Icon 图标</router-link>
+      <router-link to="/image">Image 图片</router-link>
+      
     </div>
 
     <div class="title">表单组件</div>

@@ -29,5 +29,6 @@
     "stylus": "^0.54.8",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.6.11"
-  }
+  },
+  "homepage": "https://lzc.github.io/github-actions-demo"
 }

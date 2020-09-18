@@ -16,7 +16,7 @@ export default {
     badge: [Number, String],
     size: {
       type: [String, Number],
-      default: '24',
+      default: '32',
     }
   },
   data () {
@@ -44,7 +44,7 @@ export default {
       ]
     },
     fontSize () {
-      return this.size.substr(this.size.length - 1, 1) === 'm' ? this.size : `${this.size}px`
+      return !isNaN(Number(this.size)) ? `${this.size}px` : this.size
     }
   },
   methods: {

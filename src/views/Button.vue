@@ -48,7 +48,7 @@
 
     <div class="title">页面导航（暂未实现）</div>
     <ls-button class="btn" type="primary">URL 跳转</ls-button>
-    <ls-button class="btn" type="info">路由跳转</ls-button>
+    <ls-button class="btn" type="info" to="home">路由跳转</ls-button>
 
     <div class="title">自定义颜色</div>
     <ls-button class="btn" color="#7232dd">单色按钮</ls-button>
